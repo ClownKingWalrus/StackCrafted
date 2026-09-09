@@ -1,0 +1,506 @@
+:root {
+  --background: 255, 255, 255; /* White */
+
+  --border: 50, 50, 50; /* this is used as a thin border around blocks of items*/
+
+  --card: 50, 19, 150; /* This is essentialy a background for blocks of items -light nature green*/
+  --card2: 50, 150, 150; /* This is essentialy a background for blocks of items -light nature green*/
+  --card-hover: 50, 80, 250; /* hover color for card -light sky blue*/
+  --card2-hover: 50, 255, 200; /* hover color for card -light sky blue*/
+
+  --text-primary: 100, 0, 0; /* Black text */
+  --text-secondary: 255, 163, 58; /* light orange */
+}
+
+.card {
+  background: rgb(var(--card));
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 15px;
+  padding-top: 30px;
+}
+
+.card2 {
+  background: rgb(var(--card2));
+  border-radius: 32px;
+  height: fit-content;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  background: rgb(var(--card-hover));
+  transform:translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card2:hover {
+  background: rgb(var(--card2-hover));
+  transform:translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.logo {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border: 0.5px solid rgb(var(--border));
+  border-radius: 2px; /* ~ rounded-2xl */
+}
+
+.logo-website {
+  display: block;
+  height: 100px;
+  width: fit-content;
+  overflow: hidden;
+  border: 0.5px solid rgb(var(--border));
+  border-radius: 2px; /* ~ rounded-2xl */
+  transform: translate(-10%, -10%);
+}
+
+.navbar {
+  height: 8vh; 
+  width: 100%;
+  /* border: 1px solid rgb(var(--border));
+  border-radius: 4px; ~ rounded-2xl */
+  padding-bottom: 2px;
+  padding-top: 2px;
+  display: flex;
+  overflow: hidden
+}
+
+.center {
+  justify-items: center;
+}
+
+.mh1 {
+  max-height: 100px;
+}
+
+.home {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px; /* ~ rounded-2xl */
+  overflow: hidden
+}
+
+.ch1 {
+  color: rgb(100, 0, 255); /* direct value as fallback */
+  font-size: xx-large;
+}
+
+.ch2 {
+
+  font-size: xx-large;
+  /* color: rgb(var(--text-secondary));  <= dosent work for some reason*/
+  color: rgb(255, 163, 58); /* direct value as fallback */
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: xx-large;
+  color: rgb(255, 163, 58); /* direct value as fallback */
+}
+
+.heroScroll {
+  position: relative;
+  min-height: 80vh;
+  overflow: hidden;
+}
+
+/* BACKGROUND CSS */
+/* BACKGROUND CSS */
+/* BACKGROUND CSS */
+
+.space-scene {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  overflow: hidden;
+  
+  background: 
+  radial-gradient(circle at center, rgba(69, 81, 133, 0.18) 0%, rgba(7, 10, 20, 0.84) 30%, rgba(2,4,10, 1) 70%),
+  linear-gradient(to bottom, rgb(5,8,18), rgb(2,3,8));
+  
+  z-index: -100;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: 
+  radial-gradient(circle at 35% 35%, rgb(255, 253, 232) 0%, rgb(255, 209, 189) 30%, rgb(255, 205, 162) 70%);
+  
+  box-shadow:
+  0 0 20px rgba(255, 240, 141, 0.7),
+  0 0 50px rgba(255, 252, 152, 0.35),
+  0 0 100px rgba(255, 238, 175, 0.15);
+  
+  z-index: -9;
+}
+
+.sun2 {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: 
+  radial-gradient(circle at 35% 35%, rgb(212, 139, 255) 0%, rgb(168, 92, 255) 30%, rgb(142, 43, 255) 70%);
+  
+  box-shadow:
+  0 0 20px rgba(25, 255, 213, 0.7),
+  0 0 50px rgba(8, 114, 96, 0.35),
+  0 0 100px rgba(8, 138, 58, 0.15);
+  
+  z-index: -9;
+}
+
+.sun-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(249, 255, 168, 0.5) 0%, rgba(255, 180, 80, 0.2) 45%, rgba(255, 140, 40, 0.1) 75%);
+  filter: blur(22px);
+  z-index: -10;
+}
+
+.sun2-glow {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(120, 12, 186, 0.2) 0%, rgba(109, 49, 158, 0.2) 45%, rgba(219, 177, 234, 0.3) 75%);
+  filter: blur(22px);
+  z-index: -10;
+}
+
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  
+  transform: translate(920%, -50%);
+
+  background: 
+  radial-gradient(circle at 35% 35%, rgb(0, 254, 38) 0%, rgb(25, 98, 255) 70%);
+  
+  box-shadow:
+  0 0 2px rgba(141, 255, 200, 0.7),
+  0 0 5px rgba(152, 255, 159, 0.35),
+  0 0 10px rgba(191, 255, 175, 0.15);
+
+  animation: planet-depth 12s ease-in-out infinite;
+
+  z-index: -9;
+}
+.planet2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  
+  transform: translate(620%, -50%);
+
+  background: 
+  radial-gradient(circle at 35% 35%, rgb(254, 148, 0) 0%, rgb(255, 25, 25) 70%);
+  
+  box-shadow:
+  0 0 2px rgba(232, 135, 82, 0.7),
+  0 0 5px rgba(255, 238, 54, 0.35),
+  0 0 10px rgba(255, 255, 20, 0.15);
+
+  animation: planet-depth 20s ease-in-out infinite;
+
+  z-index: -9;
+}
+
+.planet3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  
+  transform: translate(300%, -50%);
+
+  background: 
+  radial-gradient(circle at 35% 35%, rgb(73, 225, 255) 0%, rgb(0, 225, 255) 70%);
+  
+  box-shadow:
+  0 0 2px rgba(141, 255, 200, 0.7),
+  0 0 5px rgba(152, 255, 159, 0.35),
+  0 0 10px rgba(191, 255, 175, 0.15);
+
+  animation: planet-depth 60s ease-in-out infinite;
+
+  z-index: -9;
+}
+
+.planet1-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  
+  transform: translate(300%, -50%);
+
+  background: 
+  radial-gradient(circle at 35% 35%, rgb(203, 73, 255) 0%, rgb(72, 12, 88) 70%);
+  
+  box-shadow:
+  0 0 2px rgba(141, 255, 200, 0.7),
+  0 0 5px rgba(152, 255, 159, 0.35),
+  0 0 10px rgba(191, 255, 175, 0.15);
+
+  animation: planet-depth 60s ease-in-out infinite;
+
+  z-index: -9;
+}
+
+.planet4 {
+  position: absolute;
+  top: 42%;
+  left: 42%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: 
+  radial-gradient(circle at 35% 35%, rgb(73, 225, 255) 0%, rgb(0, 225, 255) 70%);
+  
+  box-shadow:
+  0 0 2px rgba(141, 255, 200, 0.7),
+  0 0 5px rgba(152, 255, 159, 0.35),
+  0 0 10px rgba(191, 255, 175, 0.15);
+
+  animation: planet-depth 60s ease-in-out infinite;
+
+  offset-path: path("M 0 0 C 20 -60, 20 -160, -10 -220 C -40 -270, -90 -280, -130 -260 C -170 -240, -210 -200, -230 -155 C -250 -110, -245 -40, -210 10 C -175 55, -110 80, -55 72 C -28 66, -10 36, 0 0 C 50 -60, 160 -30, 220 20 C 300 70, 310 170, 255 225 C 200 280, 100 285, 40 230 C -20 175, -10 80, 0 0");
+  offset-distance: 0%;
+  offset-rotate: 0deg;
+  animation: orbit-spinDouble 20s linear infinite;
+
+  z-index: -9;
+}
+
+.planet-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 200%;
+  transform: translate(-50%, -50%);
+}
+
+.planet-wrapper2 {
+  position: absolute;
+  top: 50%;
+  left: 120%;
+  transform: translate(-50%, -50%);
+}
+
+.planet-wrapper3 {
+  position: absolute;
+  top: 50%;
+  left: 160%;
+  transform: translate(-50%, -50%);
+}
+
+.planet-wrapper4 {
+  position: absolute;
+  top: 50%;
+  left: 120%;
+  transform: translate(-50%, -50%);
+  
+  /* offset-path: path("M 0 0 C 800 -150, -100 500, -30 150 C 100 500, -800 -150, 0 0");
+  offset-distance: 0%;
+  animation: orbit-spinDouble 5s linear infinite;
+  outline: 1px solid red; */
+}
+
+.planet-wrapper1-1 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  
+  transform: translate(-50%, -50%);
+
+  /* border: 1px solid rgba(180, 210, 255, 0.12); */
+
+  animation: orbit-spin 90s linear infinite;
+}
+
+.orbit1-1 {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  
+  transform: translate(-50%, -50%);
+
+  /* border: 1px solid rgba(180, 210, 255, 0.12); */
+
+  animation: orbit-spin 15s linear infinite;
+}
+
+.orbit2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 220px;
+  border-radius: 50%;
+  
+  transform: translate(-50%, -50%);
+
+  /* border: 1px solid rgba(180, 210, 255, 0.12); */
+
+  animation: orbit-spin 20s linear infinite;
+}
+
+.orbit3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  
+  transform: translate(-50%, -50%);
+
+  /* border: 1px solid rgba(180, 210, 255, 0.12); */
+
+  animation: orbit-spin 40s linear infinite;
+}
+
+.orbit4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  
+  transform: translate(-50%, -50%);
+
+  /* border: 1px solid rgba(180, 210, 255, 0.12); */
+
+  offset-path: path("M 0 0 C 800 -150, -100 500, -30 150 C 100 500, -800 -150, 0 0");
+  offset-distance: 0%;
+  animation: orbit-spinDouble 5s linear infinite;
+  outline: 1px solid red;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  } to {
+     transform: translate(-50%, -50%) rotate(360deg)
+  }
+}
+
+@keyframes orbit-spinDouble {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* fake 3D depth */
+@keyframes planet-depth {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+    filter: blur(0.8px);
+    z-index: 1;
+  }
+
+  25% {
+    transform: scale(0.95);
+    opacity: 0.9;
+    filter: blur(0.4px);
+    z-index: 1;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+    z-index: 3;
+  }
+
+  75% {
+    transform: scale(0.95);
+    opacity: 0.9;
+    filter: blur(0.4px);
+    z-index: 3;
+  }
+
+  100% {
+    transform: scale(0.85);
+    opacity: 0.7;
+    filter: blur(1px);
+    z-index: 1;
+  }
+}
+
+/* BACKGROUND CSS */
+/* BACKGROUND CSS */
+/* BACKGROUND CSS */
