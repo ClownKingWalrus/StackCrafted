@@ -48,7 +48,7 @@ function IEEE_AddEvent() {
                 
                 if (result.created) {
                     console.log("Attemptin to create")
-                    window.location.href=('/IEEE_Club/Login')
+                    window.location.href=('/IEEE_Club')
                 }
 
                 if (result.exists) {
