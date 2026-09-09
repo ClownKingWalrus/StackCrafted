@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import pg from "pg";
 import cookieParser from "cookie-parser";
 import crypto from "crypto";
+import bcrypt from "bcrypt";
 
 dotenv.config()
 
@@ -55,6 +56,12 @@ app.post("/api/usersCheck", async (req, res) => {
   try { //check if the username or email exist in the pg db
     const { username, email, password } = req.body;
 
+    if (!username || !email || !password) {
+      return res.status(400).json({
+        error: "Missing required fields"
+      });
+    }
+
     const result = await pool.query(`
       SELECT ID
       FROM "StackCraftedSchema"."User"
@@ -63,22 +70,21 @@ app.post("/api/usersCheck", async (req, res) => {
 
     const exists = result.rows.length > 0
 
-    console.log(exists)
-
     if (exists) {
       return res.json({exists})
     } else { //does not exist in postgres DB make account
+      const passwordHash = await bcrypt.hash(password, 12);
       const noAdmin = false
       await pool.query (`
         Insert INTO "StackCraftedSchema"."User" 
         (username, email, userpassword, isadmin) 
         VALUES ($1, $2, $3, $4)`,
-        [username, email, password, noAdmin]
+        [username, email, passwordHash, noAdmin]
       );
     }
 
     //route user to attempt login
-    const tryCheck = true;
+    //const tryCheck = true;
     return res.json({exists: false, created: true})
   } catch (err) {
     console.error(err);
@@ -124,6 +130,7 @@ app.post("/api/createEvent", async (req, res) => {
         VALUES ($1, $2, $3)`,
         [event_name, event_decription, date]
       );
+      return res.json({ created: true });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch Vistors" });
@@ -195,19 +202,32 @@ app.post("/api/login", async (req, res) => {
     const { username, password} = req.body;
 
     const result = await pool.query(`
-      SELECT ID, username
+      SELECT id, username, userpassword
       FROM "StackCraftedSchema"."User"
-      WHERE username = $1 AND userpassword = $2`,
-    [username, password]);
+      WHERE username = $1`,
+      [username]
+    );
 
     if (result.rows.length === 0) {
       return res.status(401).json({error: "Invalid username or password"})
     }
 
     // User and Pass succuess
-    const SessionToken = crypto.randomUUID();
     const user = result.rows[0]
-
+    
+    const passwordMatches = await bcrypt.compare(
+      password,
+      user.userpassword
+    );
+    
+    if (!passwordMatches) {
+      return res.status(401).json({
+        error: "Invalid username or password"
+      });
+    }
+    
+    const SessionToken = crypto.randomUUID();
+    
     await pool.query (`
       Insert INTO "StackCraftedSchema"."Sessions" 
       (sessiontoken, userid, expiresat) 
@@ -218,7 +238,7 @@ app.post("/api/login", async (req, res) => {
     res.cookie("session", SessionToken, {
       httpOnly: true,
       sameSite: "lax",
-      secure: false,
+      secure: true,
     });
 
     res.json({ message: "Login successful"});
@@ -240,10 +260,10 @@ app.post("/api/logOut", async (req, res) => {
       )
    }
 
-   res.clearCookie("session", {
+  res.clearCookie("session", {
     httpOnly: true,
     sameSite: "lax",
-    secure: false,
+    secure: true,
   });
 
   res.json( {message: "Logged out"} )
