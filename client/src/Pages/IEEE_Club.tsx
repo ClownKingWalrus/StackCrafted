@@ -13,7 +13,7 @@ function IEEE_Club() {
     const [user, setUser] = useState<User | null>(null);
 
     useEffect( () => {
-        fetch("http://localhost:3001/api/getLogin", {
+        fetch("/api/getLogin", {
             credentials: "include",
         })
         .then(res => res.ok ? res.json() : null)

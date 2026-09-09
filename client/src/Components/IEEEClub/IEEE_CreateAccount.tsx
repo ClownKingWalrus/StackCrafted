@@ -32,7 +32,7 @@ function IEEE_CreateAccount() {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/api/usersCheck", {
+            const response = await fetch("/api/usersCheck", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

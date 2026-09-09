@@ -8,7 +8,7 @@ function IEEE_Scheduled_Events() {
     useEffect( () => {
         async function loadEvents() {
             try {
-                const response = await fetch("http://localhost:3001/api/events");
+                const response = await fetch("/api/events");
 
                 if (!response.ok) {
                     throw new Error("Visitors Failed to load")

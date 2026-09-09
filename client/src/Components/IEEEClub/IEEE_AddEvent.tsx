@@ -32,7 +32,7 @@ function IEEE_AddEvent() {
             console.log(dateFormatted)
 
             try {
-                const response = await fetch("http://localhost:3001/api/createEvent", {
+                const response = await fetch("/api/createEvent", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

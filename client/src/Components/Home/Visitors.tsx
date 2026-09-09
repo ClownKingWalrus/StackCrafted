@@ -9,7 +9,7 @@ function Visitors() {
     useEffect( () => {
         async function loadVistors() {
             try {
-                const response = await fetch("http://localhost:3001/api/visitors");
+                const response = await fetch("/api/visitors");
 
                 if (!response.ok) {
                     throw new Error("Visitors Failed to load")

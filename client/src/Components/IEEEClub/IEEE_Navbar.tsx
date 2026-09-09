@@ -1,7 +1,7 @@
 import styles from "./IEEE.module.css";
 
 async function logOut() {
-    await fetch("http://localhost:3001/api/logOut", {
+    await fetch("/api/logOut", {
         method: "POST",
         credentials: "include",
     })
@@ -10,7 +10,7 @@ async function logOut() {
 }
 
 async function adminCheck() {
-    const res = await fetch("http://localhost:3001/api/admin/users", {
+    const res = await fetch("/api/admin/users", {
         method: "POST",
         credentials: "include",
     })
